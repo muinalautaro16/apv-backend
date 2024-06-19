@@ -6,10 +6,8 @@ import emailolvidePassword from "../helpers/emailolvidePassword.js";
 
 const registrar = async (req, res) => {
     const { email, nombre } = req.body
-   
     //Prevenir usuarios duplicados
     const existeUsuario = await Veterinario.findOne({ email })
-   
     if (existeUsuario) {
       const error = new Error('Usuario ya registrado')
       return res.status(400).json({ msg: error.message })
